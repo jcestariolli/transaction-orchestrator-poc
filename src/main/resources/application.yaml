@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: transaction-orchestrator-poc
+
+springdoc:
+  api-docs.path: /transaction-orchestrator-api-docs
+  swagger-ui:
+    path: /transaction-orchestrator-ui.html
+    enabled: true
