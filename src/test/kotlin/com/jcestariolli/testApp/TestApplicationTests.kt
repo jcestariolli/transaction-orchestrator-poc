@@ -1,10 +1,10 @@
-package com.jcestariolli.transaction_orchestrator_poc
+package com.jcestariolli.testApp
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class TransactionOrchestratorPocApplicationTests {
+class TestApplicationTests {
 
 	@Test
 	fun contextLoads() {

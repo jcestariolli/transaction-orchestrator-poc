@@ -1,7 +1,7 @@
-package com.jcestariolli.transaction_orchestrator_poc.controller
+package com.jcestariolli.testApp.controller
 
-import com.jcestariolli.transaction_orchestrator_poc.controller.dto.BasicErrorResponse
-import com.jcestariolli.transaction_orchestrator_poc.controller.dto.test.TestSuccessResponse
+import com.jcestariolli.testApp.controller.dto.response.BasicErrorResponseDto
+import com.jcestariolli.testApp.controller.dto.response.HelloWorldResponseDto
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Validated
 @Tags(
     Tag(
-        name = "TransactionOrchestratorApi",
-        description = "An API to expose commands to deal with transactions",
+        name = "Test API",
+        description = "An API to expose commands to deal with tests resources",
     )
 )
-@RequestMapping("/transactions")
-interface TransactionOrchestratorApi {
+@RequestMapping("/test")
+interface TestApi {
 
     @GetMapping(
-        name = "Test request - First endpoint!",
-        value = ["/test"],
+        name = "Hello World for Test API",
+        value = ["/hello-world"],
         produces = ["application/json"],
     )
     @ApiResponses(
@@ -37,19 +37,19 @@ interface TransactionOrchestratorApi {
                 responseCode = "4xx",
                 content = [Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = Schema(implementation = BasicErrorResponse::class)
+                    schema = Schema(implementation = BasicErrorResponseDto::class)
                 )]
             ),
             ApiResponse(
                 responseCode = "5xx",
                 content = [Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = Schema(implementation = BasicErrorResponse::class)
+                    schema = Schema(implementation = BasicErrorResponseDto::class)
                 )]
             ),
         ]
     )
-    fun getTestEndpoint(): ResponseEntity<TestSuccessResponse> {
+    fun getHelloWorld(): ResponseEntity<HelloWorldResponseDto> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 

@@ -1,11 +1,11 @@
-package com.jcestariolli.transaction_orchestrator_poc.controller.dto
+package com.jcestariolli.testApp.controller.dto.response
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.swagger.v3.oas.annotations.media.Schema
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class BasicErrorResponse(
+data class BasicErrorResponseDto(
     @Schema(description = "HTTP status code", example = "x00")
     @JsonProperty
     val code: String,

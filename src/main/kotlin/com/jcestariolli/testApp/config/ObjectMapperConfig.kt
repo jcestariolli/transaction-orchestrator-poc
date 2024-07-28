@@ -1,4 +1,4 @@
-package com.jcestariolli.transaction_orchestrator_poc.config
+package com.jcestariolli.testApp.config
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
