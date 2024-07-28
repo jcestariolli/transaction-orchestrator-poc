@@ -3,10 +3,32 @@ server:
 
 spring:
   application:
-    name: transaction-orchestrator-poc
+    name: test-app
+
+  datasource:
+    url: jdbc:h2:mem:test-db
+    driverClassName: org.h2.Driver
+    username: jezz
+    password: changeit
+    initialization-mode: embedded # initialize script only when is in-memory db
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        jdbc:
+          time_zone: UTC-3
+    show-sql: true # query-log
+    hibernate.ddl-auto: update # update schemas
+    defer-datasource-initialization: true # delay datasource initialization to load data
+
+  h2:
+    console:
+      enabled: true # h2 web console
+      path: /test-db-ui # h2 web console url | default path: h2-console
 
 springdoc:
-  api-docs.path: /transaction-orchestrator-api-docs
+  api-docs.path: /test-app-docs
   swagger-ui:
-    path: /transaction-orchestrator-ui.html
+    path: /test-app-ui.html # swagger ui url
     enabled: true
