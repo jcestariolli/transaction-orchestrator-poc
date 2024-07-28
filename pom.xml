@@ -11,10 +11,10 @@
 	</parent>
 
 	<groupId>com.jcestariolli</groupId>
-	<artifactId>transaction-orchestrator-poc</artifactId>
+	<artifactId>test-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>transaction-orchestrator-poc</name>
-	<description>Java/Kotlin application to practice and validate architectural concepts for payment transactions orchestration</description>
+	<name>test-app</name>
+	<description>An test application with Rest API and In-Memory Database</description>
 
 	<properties>
 		<java.version>17</java.version>
