@@ -11,6 +11,7 @@ spring:
     username: jezz
     password: changeit
     initialization-mode: embedded # initialize script only when is in-memory db
+    data: init-data-in-memory.sql
 
   jpa:
     properties:

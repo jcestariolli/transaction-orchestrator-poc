@@ -4,10 +4,10 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.jcestariolli.test.controller.dto.response.TestResponseDto
 import com.jcestariolli.test.domain.toDto
-import com.jcestariolli.test.mock.extension.domain.fake
-import com.jcestariolli.test.mock.extension.localizedFaker
+import com.jcestariolli.test.faker.mock.domain.fake
+import com.jcestariolli.test.faker.utils.localizedFaker
 import com.jcestariolli.test.service.TestServicePort
-import com.jcestariolli.test.utils.parseMvcResult
+import com.jcestariolli.test.utils.extension.parse
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import org.assertj.core.api.Assertions.assertThat
@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.MvcResult
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
@@ -26,6 +27,7 @@ import com.jcestariolli.test.domain.Test as TestDomain
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 class TestApiUnitTest(
     @Autowired private val objectMapper: ObjectMapper,
     @Autowired private val mvc: MockMvc,
@@ -50,10 +52,9 @@ class TestApiUnitTest(
         ).andReturn()
 
         val expectedResponseDto = testList.map { it.toDto() }
-        val responseDto: List<TestResponseDto> = parseMvcResult(
+        val responseDto: List<TestResponseDto> = mvcResult.parse(
             mapper = objectMapper,
-            mvResult = mvcResult,
-            valueTypeRef = object : TypeReference<List<TestResponseDto>>() {}
+            typeReference = object : TypeReference<List<TestResponseDto>>() {}
         )
         assertThat(responseDto).usingRecursiveComparison().isEqualTo(expectedResponseDto)
     }
@@ -72,10 +73,9 @@ class TestApiUnitTest(
             MockMvcResultMatchers.status().isOk
         ).andReturn()
 
-        val responseDto: List<TestResponseDto> = parseMvcResult(
+        val responseDto: List<TestResponseDto> = mvcResult.parse(
             mapper = objectMapper,
-            mvResult = mvcResult,
-            valueTypeRef = object : TypeReference<List<TestResponseDto>>() {}
+            typeReference = object : TypeReference<List<TestResponseDto>>() {}
         )
         assertThat(responseDto).isEmpty()
     }
@@ -96,10 +96,9 @@ class TestApiUnitTest(
         ).andReturn()
 
         val expectedResponseDto = testDomain.toDto()
-        val responseDto: TestResponseDto = parseMvcResult(
+        val responseDto: TestResponseDto = mvcResult.parse(
             mapper = objectMapper,
-            mvResult = mvcResult,
-            valueTypeRef = object : TypeReference<TestResponseDto>() {}
+            typeReference = object : TypeReference<TestResponseDto>() {}
         )
         assertThat(responseDto).usingRecursiveComparison().isEqualTo(expectedResponseDto)
     }

@@ -1,7 +1,7 @@
-package com.jcestariolli.test.mock.extension.domain
+package com.jcestariolli.test.faker.mock.domain
 
 import com.jcestariolli.test.domain.Test
-import com.jcestariolli.test.mock.extension.localizedFaker
+import com.jcestariolli.test.faker.utils.localizedFaker
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.LocalDate

@@ -1,4 +1,4 @@
-package com.jcestariolli.test.mock.extension
+package com.jcestariolli.test.faker.utils
 
 import io.github.serpro69.kfaker.faker
 
