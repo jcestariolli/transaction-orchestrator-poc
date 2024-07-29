@@ -1,27 +1,23 @@
 package com.jcestariolli.test.service.impl
 
 import com.jcestariolli.test.domain.Test
+import com.jcestariolli.shared.exception.ResourceNotFoundException
 import com.jcestariolli.test.persistence.TestRepositoryPort
 import com.jcestariolli.test.service.TestServicePort
 import org.springframework.stereotype.Service
 
 @Service
 class TestServicePortImpl(
-    testRepositoryPort: TestRepositoryPort
+    val testRepository: TestRepositoryPort
 ) : TestServicePort {
-    override fun saveOrUpdate(test: Test): Test {
-        TODO("Not yet implemented")
-    }
+    @Throws(ResourceNotFoundException::class)
+    override fun saveOrUpdate(test: Test): Test = testRepository.saveOrUpdate(test = test)
 
-    override fun list(): List<Test>? {
-        TODO("Not yet implemented")
-    }
+    override fun list(): List<Test>? = testRepository.list()
 
-    override fun findTest(id: String): Test? {
-        TODO("Not yet implemented")
-    }
+    @Throws(ResourceNotFoundException::class)
+    override fun findTest(id: String): Test? = testRepository.findTest(id = id)
 
-    override fun delete(id: String) {
-        TODO("Not yet implemented")
-    }
+    @Throws(ResourceNotFoundException::class)
+    override fun delete(id: String) = testRepository.delete(id = id)
 }

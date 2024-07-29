@@ -16,7 +16,7 @@ import java.util.*
 @Table(name = "test")
 data class TestDao(
     @Id
-    val id: String? = null,
+    val id: String,
 
     @Column(nullable = true)
     val textField: String? = null,
