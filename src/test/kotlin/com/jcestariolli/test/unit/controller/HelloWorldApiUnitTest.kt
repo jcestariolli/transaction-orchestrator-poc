@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class HelloWorldApiTest(
+class HelloWorldApiUnitTest(
     @Autowired private val objectMapper: ObjectMapper,
     @Autowired private val mvc: MockMvc,
 ) {

@@ -1,4 +1,4 @@
-package com.jcestariolli.test
+package com.jcestariolli.test.unit
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
