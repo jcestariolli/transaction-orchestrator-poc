@@ -10,7 +10,7 @@ import com.jcestariolli.demo.persistence.jpa.dao.DemoDao
 import org.springframework.stereotype.Component
 
 @Component
-class DemoRepositoryPortImpl(
+class DemoRepositoryImpl(
     val demoRepositoryJpa: DemoRepositoryJpa
 ) : DemoRepositoryPort {
 
@@ -26,7 +26,7 @@ class DemoRepositoryPortImpl(
     override fun list(): List<Demo>? =
         demoRepositoryJpa.findAll().takeIf { it.isNotEmpty() }?.mapNotNull { it?.toDomain() }
 
-    override fun findTest(id: String): Demo? = demoRepositoryJpa.findById(id).takeIf {
+    override fun findBy(id: String): Demo? = demoRepositoryJpa.findById(id).takeIf {
         it.isPresent
     }?.get()?.toDomain() ?: throw ResourceNotFoundException(
         resourceName = resourceName,

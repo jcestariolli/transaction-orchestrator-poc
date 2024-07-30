@@ -7,7 +7,7 @@ import com.jcestariolli.demo.service.DemoServicePort
 import org.springframework.stereotype.Service
 
 @Service
-class DemoServicePortImpl(
+class DemoServiceImpl(
     val demoRepository: DemoRepositoryPort
 ) : DemoServicePort {
     @Throws(ResourceNotFoundException::class)
@@ -16,7 +16,7 @@ class DemoServicePortImpl(
     override fun list(): List<Demo>? = demoRepository.list()
 
     @Throws(ResourceNotFoundException::class)
-    override fun findDemo(id: String): Demo? = demoRepository.findTest(id = id)
+    override fun findDemo(id: String): Demo? = demoRepository.findBy(id = id)
 
     @Throws(ResourceNotFoundException::class)
     override fun delete(id: String) = demoRepository.delete(id = id)

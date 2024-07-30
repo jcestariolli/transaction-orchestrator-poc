@@ -8,7 +8,7 @@ interface DemoRepositoryPort {
 
     fun list(): List<Demo>?
 
-    fun findTest(id: String): Demo?
+    fun findBy(id: String): Demo?
 
     fun delete(id: String)
 
