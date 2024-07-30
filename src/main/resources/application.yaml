@@ -3,15 +3,18 @@ server:
 
 spring:
   application:
-    name: test-app
+    name: demo-app
 
   datasource:
-    url: jdbc:h2:mem:test-db
+    url: jdbc:h2:mem:demo-db
     driverClassName: org.h2.Driver
     username: jezz
     password: changeit
     initialization-mode: embedded # initialize script only when is in-memory db
-    data: init-data-in-memory.sql
+
+  sql:
+    init:
+      data-locations: classpath:init-data-in-memory.sql
 
   jpa:
     properties:
@@ -26,10 +29,10 @@ spring:
   h2:
     console:
       enabled: true # h2 web console
-      path: /test-db-ui # h2 web console url | default path: h2-console
+      path: /demo-app-db-ui # h2 web console url | default path: h2-console
 
 springdoc:
-  api-docs.path: /test-app-docs
+  api-docs.path: /demo-app-docs
   swagger-ui:
-    path: /test-app-ui.html # swagger ui url
+    path: /demo-app-ui.html # swagger ui url
     enabled: true

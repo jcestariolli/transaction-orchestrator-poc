@@ -11,10 +11,10 @@
 	</parent>
 
 	<groupId>com.jcestariolli</groupId>
-	<artifactId>test-app</artifactId>
+	<artifactId>demo-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>test-app</name>
-	<description>An test application with Rest API and In-Memory Database</description>
+	<name>demo-app</name>
+	<description>A demo application with Rest API and In-Memory Database</description>
 
 	<properties>
 		<java.version>17</java.version>
